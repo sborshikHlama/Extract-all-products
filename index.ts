@@ -34,8 +34,8 @@ function defineRanges(range: number): PriceRangesArray {
 async function sendRequest(minPrice: number, maxPrice: number): Promise<Array<Product>> {
   try {
     const response = await fetch(`${url}?price-range=${minPrice}-${maxPrice}`)
-    const responseData = await response.json() // Parse json
-    const products = accumulateProducts(responseData)
+    const responseData: ResponseData = await response.json() // Parse json
+    const products: Array<Product> = accumulateProducts(responseData)
     return products
   } catch (error) {
     throw error
