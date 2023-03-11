@@ -1,5 +1,5 @@
-// We don't care about what is inside the product objects.
-// But i think, that it is better to create type Product even now it has any type inside
+// We don't care about what is inside the product objects,
+// but i think, that it is better to create type Product even now it has any type inside
 type Product = {} 
 
 type PriceRange = {minPrice: number, maxPrice: number}
@@ -17,7 +17,7 @@ const url = 'https://api.ecommerce.com/products' // API endpoint
 // The first step is to deside in which price range request func will search products
 function defineRanges(range: number): PriceRangesArray { 
     const priceRangesArray: PriceRangesArray = []
-    const maximumCost = 100000 // Costs somewhere between $0 and $100,000
+    const maximumCost = 100000 // Costs somewhere between $0 and $100,000 
     const allRanges = maximumCost / range  // Split Maximium on price range to get all ranges
     for(let i = 0; i < allRanges; i++) { 
         let minPrice = i * range 
@@ -65,7 +65,7 @@ async function extractProducts(range: number): Promise<Array<Product>> {
     
         // Send requests to get all products from all ranges
         for(let i = 0; i < priceRanges.length; i++) {
-            const result = await sendRequest(priceRanges[i].minPrice, priceRanges[i].maxPrice) 
+            const result: Array<Product> = await sendRequest(priceRanges[i].minPrice, priceRanges[i].maxPrice) 
             allProducts.push(...result) // Prevent allProducts from being 2D array
         }
     
