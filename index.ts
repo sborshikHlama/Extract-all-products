@@ -59,8 +59,8 @@ async function extractProducts(range: number): Promise<Array<Product>> {
     const allProducts: Array<Product> = []
     const priceRanges = defineRanges(range)
     try {
-        const responseData: ResponseData = await fetch(url) // Make request to find out total amount products
-            .then(response => response.json()) 
+        const response = await fetch(url) // Make request to find out total amount products
+        const responseData: ResponseData = await response.json() 
         const total = responseData.total  
     
         // Send requests to get all products from all ranges
